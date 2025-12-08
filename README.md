@@ -20,13 +20,12 @@ This phase focused on completing the full mechatronic foundation, integrating al
 
 ### ✔ Integrated System Demo
 The robot successfully performs a **proximity-triggered fetch task**:
-1. Detect object  
-2. Approach  
-3. Pick it  
-4. Rotate 180°  
-5. Place it  
+1. Detect object    
+2. Pick it  
+3. Rotate 180°  
+4. Place it  
 
-Video in `/demo/pick-and-place.mp4`.
+Video in `/demo`.
 
 ---
 
@@ -37,27 +36,36 @@ Video in `/demo/pick-and-place.mp4`.
 - 2× L298N drivers  
 - Arduino Mega  
 - PCA9685 servo controller  
-- I2C multiplexer  
-- 4× MG90S servos (arm)  
-- 2× buck converters  
-- LiPo battery  
-- PCT connectors  
+- I2C multiplexer 
 
-Full list in `/bom/bom.txt`.
+Full list in `/bom/`.
 
 ---
-
-## 🖼 Media
-
-Images located in `/images/`:
-- main.jpg  
-- arm.jpg  
-- chassis.jpg  
-- wiring.jpg  
 
 Demo video in `/demo/`.
 
 ---
 
-## 📂 Repo Structure
+## 🔭 Phase-2 (Planned Upgrades)
+
+- ESP32 for onboard vision  
+- Object detection + autonomous pick-and-place  
+- Improved arm kinematics + torque upgrade  
+- Better gripper accuracy  
+- Autonomous navigation  
+- Cleaner modular wiring  
+- Payload + stability improvements  
+
+---
+
+## 📌 Status  
+**Prototype — Phase 1 Complete**  
+Core platform is functional and validated. Vision and autonomy are planned for the next build cycle.
+
+---
+
+## 📫 Contact  
+Soham  
+GitHub: *https://github.com/SJ2512*
+
 
