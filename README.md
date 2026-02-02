@@ -32,11 +32,9 @@ The robot successfully performs a **proximity-triggered fetch task**:
 - PCA9685 servo controller  
 - I2C multiplexer 
 
-Full list in `/bom/`.
-
 ## Phase-2 (Planned Upgrades)
 
-- ESP32 for onboard vision  
+- ESP32 Cam for onboard vision  
 - Object detection + autonomous pick-and-place  
 - Improved arm kinematics + torque upgrade  
 - Better gripper accuracy  
@@ -47,6 +45,6 @@ Full list in `/bom/`.
 ## Status  
 **Prototype — Phase 1 Complete**  
 Core platform is functional and validated. Vision and autonomy are planned for the next build cycle.
-GitHub: *https://github.com/SJ2512*
+
 
 
