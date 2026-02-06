@@ -239,108 +239,95 @@ Planned but not yet implemented:
 * Custom larger chassis
 * Improved payload capacity
 
---
+---
 
-##Engineering Design Decisions
-Why Arduino Mega 2560?
+# Engineering Design Decisions
+
+## Why Arduino Mega 2560?
 
 The system required simultaneous control of:
 
-Multiple servos
-
-Motor drivers
-
-I2C sensors
-
-Expansion capability
+* Multiple servos
+* Motor drivers
+* I2C sensors
+* Expansion capability
 
 Arduino Uno-class boards were insufficient in I/O and memory.
 Arduino Mega was selected for:
 
-High GPIO availability
+* High GPIO availability
+* Stable multi-device control
+* Rapid prototyping reliability
+* Easy future expansion to master–slave architecture
 
-Stable multi-device control
+---
 
-Rapid prototyping reliability
-
-Easy future expansion to master–slave architecture
-
-Why LiPo battery over Li-ion pack?
+## Why LiPo battery over Li-ion pack?
 
 Initial testing with Li-ion cells resulted in:
 
-Voltage drop under load
-
-Reduced motor torque
-
-Unstable performance during simultaneous drive + arm operation
+* Voltage drop under load
+* Reduced motor torque
+* Unstable performance during simultaneous drive + arm operation
 
 LiPo battery was selected due to:
 
-Higher discharge capability
-
-Stable voltage under peak current
-
-Better suitability for robotics load profiles
+* Higher discharge capability
+* Stable voltage under peak current
+* Better suitability for robotics load profiles
 
 This significantly improved overall system stability.
 
-Why dual buck converter architecture?
+---
+
+## Why dual buck converter architecture?
 
 The system required multiple voltage rails:
 
-Logic (5V)
-
-Servos (~6V)
-
-Motors (battery rail)
+* Logic (5V)
+* Servos (~6V)
+* Motors (battery rail)
 
 A dual buck architecture was implemented to:
 
-Isolate noise-sensitive logic circuits
-
-Prevent MCU resets during motor spikes
-
-Provide stable servo voltage
-
-Reduce electrical interference
+* Isolate noise-sensitive logic circuits
+* Prevent MCU resets during motor spikes
+* Provide stable servo voltage
+* Reduce electrical interference
 
 This separation improved reliability but increased wiring complexity, leading to plans for a dedicated power distribution PCB in future revisions.
 
-Why PCA9685 servo driver?
+---
+
+## Why PCA9685 servo driver?
 
 Direct servo control from MCU caused:
 
-Timing instability
-
-Potential jitter under multi-servo load
+* Timing instability
+* Potential jitter under multi-servo load
 
 PCA9685 provided:
 
-Stable hardware PWM generation
+* Stable hardware PWM generation
+* Reduced MCU load
+* Cleaner servo control
+* Expandability for future DOF increase
 
-Reduced MCU load
+---
 
-Cleaner servo control
-
-Expandability for future DOF increase
-
-Why L298N used despite inefficiency?
+## Why L298N used despite inefficiency?
 
 L298N drivers were used temporarily due to:
 
-Immediate availability
-
-Rapid prototyping needs
-
-Simplicity of integration
+* Immediate availability
+* Rapid prototyping needs
+* Simplicity of integration
 
 However, testing revealed:
 
-High power loss
-
-Heat generation
-
-Reduced motor efficiency
+* High power loss
+* Heat generation
+* Reduced motor efficiency
 
 Future versions will replace L298N with BTS7960 high-current drivers.
+---
