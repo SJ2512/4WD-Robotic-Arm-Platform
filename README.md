@@ -239,7 +239,108 @@ Planned but not yet implemented:
 * Custom larger chassis
 * Improved payload capacity
 
+--
 
+##Engineering Design Decisions
+Why Arduino Mega 2560?
 
-to
-**“who the hell built this” level.**
+The system required simultaneous control of:
+
+Multiple servos
+
+Motor drivers
+
+I2C sensors
+
+Expansion capability
+
+Arduino Uno-class boards were insufficient in I/O and memory.
+Arduino Mega was selected for:
+
+High GPIO availability
+
+Stable multi-device control
+
+Rapid prototyping reliability
+
+Easy future expansion to master–slave architecture
+
+Why LiPo battery over Li-ion pack?
+
+Initial testing with Li-ion cells resulted in:
+
+Voltage drop under load
+
+Reduced motor torque
+
+Unstable performance during simultaneous drive + arm operation
+
+LiPo battery was selected due to:
+
+Higher discharge capability
+
+Stable voltage under peak current
+
+Better suitability for robotics load profiles
+
+This significantly improved overall system stability.
+
+Why dual buck converter architecture?
+
+The system required multiple voltage rails:
+
+Logic (5V)
+
+Servos (~6V)
+
+Motors (battery rail)
+
+A dual buck architecture was implemented to:
+
+Isolate noise-sensitive logic circuits
+
+Prevent MCU resets during motor spikes
+
+Provide stable servo voltage
+
+Reduce electrical interference
+
+This separation improved reliability but increased wiring complexity, leading to plans for a dedicated power distribution PCB in future revisions.
+
+Why PCA9685 servo driver?
+
+Direct servo control from MCU caused:
+
+Timing instability
+
+Potential jitter under multi-servo load
+
+PCA9685 provided:
+
+Stable hardware PWM generation
+
+Reduced MCU load
+
+Cleaner servo control
+
+Expandability for future DOF increase
+
+Why L298N used despite inefficiency?
+
+L298N drivers were used temporarily due to:
+
+Immediate availability
+
+Rapid prototyping needs
+
+Simplicity of integration
+
+However, testing revealed:
+
+High power loss
+
+Heat generation
+
+Reduced motor efficiency
+
+Future versions will replace L298N with BTS7960 high-current drivers.
